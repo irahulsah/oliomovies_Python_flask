@@ -1,19 +1,19 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 
 from flask_sqlalchemy import SQLAlchemy
 import json
 from datetime import datetime
 
-# with open('config.json', 'r') as c:
-#     params = json.load(c)["params"]
+with open('config.json', 'r') as c:
+    info = json.load(c)["info"]
 
 app = Flask(__name__)
 
-ENV = 'prod'
+ENV = 'dev'
 
 if ENV == 'dev':
     app.debug = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = ''
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:9865103845H@localhost/rahul'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 else:
     app.debug = False
@@ -23,7 +23,7 @@ else:
 db = SQLAlchemy(app)
 
 
-class contacts(db.Model):
+class Contacts(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.String(50), nullable=False)
     Email = db.Column(db.String(50), nullable=False)
@@ -40,12 +40,12 @@ class contacts(db.Model):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', info = info )
 
 @app.route('/contacts' , methods = ['GET','POST'])
 def contacts():
 
-    if (request.method = 'POST'):
+    if (request.method == 'POST'):
         name = request.form.get('name')
         email = request.form.get('email')
         phone = request.form.get('phone')
@@ -54,11 +54,12 @@ def contacts():
         db.session.add(entry)
         db.session.commit()
 
-    return render_template('index.html')
+    return render_template('index.html', info = info )
 
 if __name__ == "__main__":
+
  
 
 
 
-app.run()
+    app.run()
