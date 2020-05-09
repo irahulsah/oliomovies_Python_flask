@@ -10,13 +10,14 @@
         "edit_heading": "Edit",
         "edit_subheading": "Editing",
         "img_path": "logo2.png",
-        "user_name": "hritik",
-        "password": "1234",
+        "user_name": "area51",
+        "password": "2dvyrJ8p",
         "location": "",
         "gmail_url": "https://mail.google.com/mail/u/0/?view=cm&fs=1&to&su=Watch%20Full%20Movies%20in%20Great%20Quality%20for%20free&body=http://blogshritik.herokuapp.com/&ui=2&tf=1",
         "twitter_url": "https://twitter.com/intent/tweet?text=Watch%20Full%20Movies%20in%20Great%20Quality%20for%20free&url=http://blogshritik.herokuapp.com",
         "pic": "nature.webp",
-        "twitch_url": "https://www.twitch.tv/"
+        "twitch_url": "https://www.twitch.tv/",
+        "prod_url": "postgres://iqsygpltzsguvx:30121b1cb14e1fbc1fc65942244c253a54c2d70279a65b21fcfc70076b48b689@ec2-18-235-20-228.compute-1.amazonaws.com:5432/d98ll8t4be4a33"
 
 
 

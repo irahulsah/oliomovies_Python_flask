@@ -10,7 +10,7 @@ with open('config.json', 'r') as c:
 
 app = Flask(__name__)
 app.secret_key = 'super-secret key'
-ENV = 'dev'
+ENV = 'prod'
 
 if ENV == 'dev':
     app.debug = True
@@ -18,7 +18,7 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 else:
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] =''
+    app.config['SQLALCHEMY_DATABASE_URI'] = info['prod_url']
     
 
 db = SQLAlchemy(app)
