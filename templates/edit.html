@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h1>Add/Edit Posts</h1>
+
+
+        <form name="sentMessage" id="Edit" action="/edit/{{sno}}" method="post" novalidate>
+          <hr>
+
+          <label><b>ID</b></label>
+          <textarea rows="2" class="form-control" placeholder="Enter ID Here" name="id" id="title" required
+            data-validation-required-message="Please enter a title.">{{post.id}}</textarea>
+
+          <!--  <input class="form-control form-control-lg" type="text" id ="title" name ="title" placeholder="Add Title Here" value = "{{post.title}}"> -->
+
+          <label><b>Front Image</b></label>
+          <textarea rows="2" class="form-control" placeholder="Enter Front image Here" name="front_image" id="title" required
+            data-validation-required-message="Please enter a title.">{{post.front_image}}</textarea>
+
+          <!-- <input class="form-control form-control-lg" type="text" id ="image" name ="tagline" placeholder="Tagline" 
+value= "{{post.tagline}}"> -->
+          <label><b>Back Image</b></label>
+          <textarea rows="2" class="form-control" placeholder="Enter Back Image Here" name="back_image" id="tagline"
+            required data-validation-required-message="Please enter a tagline.">{{post.back_image}}</textarea>
+
+          <label><b>Back Title</b></label>
+          <textarea rows="2" class="form-control" placeholder="Enter Back Title Here" name="back_title" id="tagline"
+            required data-validation-required-message="Please enter a tagline.">{{post.back_title}}</textarea>
+
+
+
+          <!-- <input class="form-control form-control-lg" type="text" id ="slug" name ="slug" placeholder="SLUG" value = "{{post.slug}}"> -->
+          <label><b>Back Text</b></label>
+          <textarea rows="2" class="form-control" placeholder="Enter Back Text Here" name="back_text" id="slug" required
+            data-validation-required-message="Please enter a slug.">{{post.back_text}}</textarea>
+
+
+          <label><b>Back Link</b></label>
+          <textarea rows="2" class="form-control" placeholder="Enter Back Link Here" name="back_link" id="slug" required
+            data-validation-required-message="Please enter a slug.">{{post.back_link}}</textarea>
+
+          <hr>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="sendEdit">Sumbit</button>
+
+
+          </div>
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Pager -->
+      </div>
+    </div>
+  </div>
+  </div>
+
+  {% endblock %}
