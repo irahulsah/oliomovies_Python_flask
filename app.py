@@ -63,7 +63,7 @@ class Posts(db.Model):
 
 @app.route('/')
 def home():
-    posts = Posts.query.filter_by().all()[0:4]
+    posts = Posts.query.filter_by().all()[0:6]
 
 
     
