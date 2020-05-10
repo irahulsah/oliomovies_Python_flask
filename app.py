@@ -10,7 +10,7 @@ with open('config.json', 'r') as c:
 
 app = Flask(__name__)
 app.secret_key = 'super-secret key'
-ENV = 'prod'
+ENV = 'dev'
 
 if ENV == 'dev':
     app.debug = True
@@ -60,6 +60,19 @@ class Posts(db.Model):
         self.back_text = back_text
         self.back_link = back_link
         self.Date = Date
+
+
+    class Image(db.Model):
+
+        __tablename__ = 'image'
+        sno = db.Column(db.Integer, primary_key=True)
+        img_link = db.Column(db.String(1500), nullable=False)
+        Date = db.Column(db.String(30), nullable =True)
+
+        def __init__(self ,img_link ,Date):
+
+            self.img_link = img_link
+            self.Date = Date
 
 @app.route('/')
 def home():
@@ -175,6 +188,37 @@ def edit(sno):
         post = Posts.query.filter_by(sno=sno).first()
 
         return render_template("edit.html",info = info, post =post, sno=sno)
+
+        
+@app.route("/image/<string:sno>", methods = ['GET' , 'POST'])
+def image(sno):
+    if ('user' in session and session['user'] == info['user_name']):
+
+
+
+        if (request.method == 'POST'):
+        # front_image, back_image, back_text, Date
+            img_link = request.form.get('image')
+            Date = datetime.now()
+
+            
+            
+            if sno == '0' :
+                image = Image(img_link = img_link ,Date = Date )
+                db.session.add(image)
+                db.session.commit()
+
+            else:
+                image = Image.query.filter_by(sno=sno).first()
+                image.img_link = img_link
+                image.Date = Date
+                db.session.commit()
+                return redirect('/image/'+ sno)
+    
+
+        image = Image.query.filter_by(sno=sno).first()
+
+        return render_template("image.html",info = info, image =image, sno=sno)
 
 
 
