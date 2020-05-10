@@ -10,7 +10,7 @@ with open('config.json', 'r') as c:
 
 app = Flask(__name__)
 app.secret_key = 'super-secret key'
-ENV = 'prod'
+ENV = 'dev'
 
 if ENV == 'dev':
     app.debug = True
@@ -61,18 +61,17 @@ class Posts(db.Model):
         self.back_link = back_link
         self.Date = Date
 
+class Crousels(db.Model):
+    __tablename__ = 'crousels'
+    sno = db.Column(db.Integer, primary_key=True)
+    i_link = db.Column(db.String(10), nullable=False)
 
-    class Image(db.Model):
+    def __init__(self , i_link,  Date):
+        self.i_link = i_link
+        
+        
+        self.Date = Date
 
-        __tablename__ = 'image'
-        sno = db.Column(db.Integer, primary_key=True)
-        img_link = db.Column(db.String(1500), nullable=False)
-        Date = db.Column(db.String(30), nullable =True)
-
-        def __init__(self ,img_link ,Date):
-
-            self.img_link = img_link
-            self.Date = Date
 
 @app.route('/')
 def home():
@@ -189,36 +188,39 @@ def edit(sno):
 
         return render_template("edit.html",info = info, post =post, sno=sno)
 
-        
-@app.route("/image/<string:sno>", methods = ['GET' , 'POST'])
-def image(sno):
+@app.route("/crousel/<string:sno>", methods = ['GET' , 'POST'])
+def crousel(sno):
     if ('user' in session and session['user'] == info['user_name']):
 
 
 
         if (request.method == 'POST'):
         # front_image, back_image, back_text, Date
-            img_link = request.form.get('image')
+        
+            i_link = request.form.get('i_link')
+            
+            
             Date = datetime.now()
 
             
             
             if sno == '0' :
-                image = Image(img_link = img_link ,Date = Date )
-                db.session.add(image)
+                crousel = Crousels(i_link=i_link, Date = Date )
+                db.session.add(crousel)
                 db.session.commit()
 
             else:
-                image = Image.query.filter_by(sno=sno).first()
-                image.img_link = img_link
-                image.Date = Date
+                crousel = Crousels.query.filter_by(sno=sno).first()
+                crousel.i_link = i_link
+        
                 db.session.commit()
-                return redirect('/image/'+ sno)
+                return redirect('/crousel/'+ sno)
     
 
-        image = Image.query.filter_by(sno=sno).first()
+        crousel = Crousels.query.filter_by(sno=sno).first()
 
-        return render_template("image.html",info = info, image =image, sno=sno)
+        return render_template("crouser.html",info = info, crousel =crousel, sno=sno)
+
 
 
 
