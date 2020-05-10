@@ -10,7 +10,7 @@ with open('config.json', 'r') as c:
 
 app = Flask(__name__)
 app.secret_key = 'super-secret key'
-ENV = 'prod'
+ENV = 'dev'
 
 if ENV == 'dev':
     app.debug = True
@@ -64,7 +64,7 @@ class Posts(db.Model):
 class Crousels(db.Model):
     __tablename__ = 'crousels'
     sno = db.Column(db.Integer, primary_key=True)
-    i_link = db.Column(db.String(10), nullable=False)
+    i_link = db.Column(db.String(1000), nullable=False)
 
     def __init__(self , i_link,  Date):
         self.i_link = i_link
@@ -89,10 +89,11 @@ def about():
 @app.route('/movies')
 def movies():
     posts = Posts.query.filter_by().all()
+    crousel = Crousels.query.filter_by().all()
 
 
     
-    return render_template('movies.html', info = info, posts =posts)
+    return render_template('movies.html', info = info,crousel = crousel, posts =posts)
 
 
 
