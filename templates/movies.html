@@ -7,6 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Olio Movies</title>
+    <link rel="shortcut icon" type ="image/png" href={{url_for('static',filename='assets/img/logo14.png')}} />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -51,18 +52,26 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      
     </ol>
-    <div class="carousel-inner ">
-      <div class="carousel-item ">
-        <img class="d-block w-100" src="https://television-b26f.kxcdn.com/wp-content/uploads/2016/05/mr-robot-770x470.jpeg" >
-      </div>
-      <div class="carousel-item ">
-        <img class="d-block w-100" src="https://television-b26f.kxcdn.com/wp-content/uploads/2016/05/mr-robot-770x470.jpeg">
-      </div>
+    <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100" src="https://cdn.flickeringmyth.com/wp-content/uploads/2019/10/Inception-2.jpg">
+        <img class="d-block w-100" src={{info.pic}} , alt="First slide">
+      </div>
+      <div class="carousel-item ">
+        <img class="d-block w-100" src={{info.pic_4}} alt="Second slide">
+      </div>
+      <div class="carousel-item ">
+        <img class="d-block w-100" src={{info.pic_2}} alt="Third slide">
+      </div>
+      <div class="carousel-item ">
+        <img class="d-block w-100" src={{info.pic_3}} alt="four slide">
+      </div>
+      <div class="carousel-item ">
+        <img class="d-block w-100" src={{info.pic_1}} alt="five slide">
+      </div>
+      <div class="carousel-item ">
+        <img class="d-block w-100" src={{info.pic_5}} alt="six slide">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

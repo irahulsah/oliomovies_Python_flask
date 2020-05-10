@@ -10,7 +10,7 @@ with open('config.json', 'r') as c:
 
 app = Flask(__name__)
 app.secret_key = 'super-secret key'
-ENV = 'dev'
+ENV = 'prod'
 
 if ENV == 'dev':
     app.debug = True
@@ -90,6 +90,7 @@ def about():
 def movies():
     posts = Posts.query.filter_by().all()
     crousel = Crousels.query.filter_by().all()
+    
 
 
     
