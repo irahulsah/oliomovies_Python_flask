@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Olio Movies</title>
-    <link rel="shortcut icon" type ="image/png" href={{url_for('static',filename='assets/img/logo14.png')}} />
+    <link rel="shortcut icon" type="image/png" href={{url_for('static',filename='assets/img/logo14.png')}} />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -19,9 +19,9 @@
     <link href="{{url_for('static',filename='css/styles.css')}}" rel="stylesheet" />
     <!-- <link href="{{url_for('static' , filename = 'css/signin.css')}}" rel="stylesheet"> -->
 
- 
 
-    
+
+
 </head>
 
 <body id="page-top">
@@ -36,23 +36,30 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                             href="/">Home</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="/about">About</a></li>
-                            <li class="nav-item dropdown">
-                                
-                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Categories
-                                </a>
-                                <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                                  <a class="dropdown-item  " href="/movies/bollywood">Bollywood</a>
-                                  <a class="dropdown-item" href="/movies/hollywood">Hollywood</a>
-                                  <a class="dropdown-item" href="/movies/tvseries">Tv Series</a>
-                                </div>
-                            </li>
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#"
+                            id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item  " href="/movies/bollywood">Bollywood</a>
+                            <a class="dropdown-item" href="/movies/hollywood">Hollywood</a>
+                            <a class="dropdown-item" href="/movies/tvseries">Tv Series</a>
+                        </div>
+                    </li>
 
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                             href="/contacts">Request Movie</a></li>
-                    
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            href="/about">About</a></li>
+                   
+                        <form class="form-inline active-cyan-4">
+                            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                        aria-label="Search"  >
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </form>
                 </ul>
             </div>
         </div>
@@ -98,7 +105,8 @@
                 <!-- Footer About Text-->
                 <div class="col-lg-4">
                     <h4 class="text-uppercase mb-4">About Olio movies</h4>
-                    <p class="lead mb-0">Olio Movies is a free movie, tv shows downloading site. Download your favorite's movies from our site, 100%
+                    <p class="lead mb-0">Olio Movies is a free movie, tv shows downloading site. Download your
+                        favorite's movies from our site, 100%
                         free, fast and effective!..
                 </div>
             </div>
