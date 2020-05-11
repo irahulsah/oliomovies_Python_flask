@@ -80,6 +80,7 @@ class Crousels(db.Model):
 @app.route('/')
 def home():
     posts = Posts.query.filter_by().all()[0:6]
+    
 
 
     
