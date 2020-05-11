@@ -113,7 +113,8 @@ def movie_route(category):
     return render_template('movie_cat.html', posts=posts, info=info)
 
 @app.route("/stream/<string:back_title>", methods=['GET'])
-def movie_route(back_title):
+
+def stream(back_title):
     
     movie = Posts.query.filter_by(back_title=back_title).first()
     return render_template('stream.html', movie=movie, info=info)
