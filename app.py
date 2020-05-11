@@ -45,6 +45,7 @@ class Posts(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     id = db.Column(db.String(10), nullable=False)
     category = db.Column(db.String(50), nullable=False)
+    youtube_link = db.Column(db.String(500), nullable=False)
     front_image = db.Column(db.String(40), nullable = False)
     back_image = db.Column(db.String(40), nullable = False)
     back_title =db.Column(db.String(50), nullable=False)
@@ -55,6 +56,7 @@ class Posts(db.Model):
     def __init__(self , id, category , front_image,  back_image, back_title, back_text, back_link,  Date):
         self.id = id
         self.category = category
+        self.youtube_link = youtube_link
         self.front_image = front_image
         
         self.back_image = back_image
@@ -109,6 +111,12 @@ def movie_route(category):
     
     posts = Posts.query.filter_by(category=category)
     return render_template('movie_cat.html', posts=posts, info=info)
+
+@app.route("/stream/<string:back_title>", methods=['GET'])
+def movie_route(back_title):
+    
+    movie = Posts.query.filter_by(back_title=back_title).first()
+    return render_template('movie_cat.html', movie=movie, info=info)
 
 
   
@@ -169,6 +177,7 @@ def edit(sno):
         # front_image, back_image, back_text, Date
             id = request.form.get('id')
             category = request.form.get('category')
+            youtube_link = request.form.get('youtube_link')
             front_image = request.form.get('front_image')
             
             back_image = request.form.get('back_image')
@@ -180,7 +189,7 @@ def edit(sno):
             
             
             if sno == '0' :
-                post = Posts(id = id, category=category,front_image = front_image  ,back_image = back_image , back_title = back_title,  back_text = back_text , back_link= back_link, Date = Date )
+                post = Posts(id = id, category=category,youtube_link=youtube_link,front_image = front_image  ,back_image = back_image , back_title = back_title,  back_text = back_text , back_link= back_link, Date = Date )
                 db.session.add(post)
                 db.session.commit()
 
@@ -188,6 +197,7 @@ def edit(sno):
                 post = Posts.query.filter_by(sno=sno).first()
                 post.id = id
                 post.category=category
+                post.youtube_link=youtube_link
                 post.front_image = front_image
                 post.back_image = back_image
                 post.back_title = back_title
