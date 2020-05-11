@@ -10,7 +10,7 @@ with open('config.json', 'r') as c:
 
 app = Flask(__name__)
 app.secret_key = 'super-secret key'
-ENV = 'prod'
+ENV = 'dev'
 
 if ENV == 'dev':
     app.debug = True
@@ -44,6 +44,7 @@ class Posts(db.Model):
     __tablename__ = 'posts'
     sno = db.Column(db.Integer, primary_key=True)
     id = db.Column(db.String(10), nullable=False)
+    category = db.Column(db.String(50), nullable=False)
     front_image = db.Column(db.String(40), nullable = False)
     back_image = db.Column(db.String(40), nullable = False)
     back_title =db.Column(db.String(50), nullable=False)
@@ -51,8 +52,9 @@ class Posts(db.Model):
     back_link  = db.Column(db.String(2000), nullable = False)
     Date = db.Column(db.String(30), nullable =True)
 
-    def __init__(self , id, front_image,  back_image, back_title, back_text, back_link,  Date):
+    def __init__(self , id, category , front_image,  back_image, back_title, back_text, back_link,  Date):
         self.id = id
+        self.category = category
         self.front_image = front_image
         
         self.back_image = back_image
@@ -80,12 +82,16 @@ def home():
 
     
     return render_template('index.html', info = info, posts=posts)
+
+
 @app.route('/about')
 def about():
 
 
     
     return render_template('about.html', info = info)
+
+
 @app.route('/movies')
 def movies():
     posts = Posts.query.filter_by().all()
@@ -98,7 +104,11 @@ def movies():
 
 
 
-
+@app.route("/movies/<string:category>", methods=['GET'])
+def movie_route(category):
+    
+    posts = Posts.query.filter_by(category=category)
+    return render_template('movie_cat.html', posts=posts, info=info)
 
 
   
@@ -158,6 +168,7 @@ def edit(sno):
         if (request.method == 'POST'):
         # front_image, back_image, back_text, Date
             id = request.form.get('id')
+            category = request.form.get('category')
             front_image = request.form.get('front_image')
             
             back_image = request.form.get('back_image')
@@ -169,13 +180,14 @@ def edit(sno):
             
             
             if sno == '0' :
-                post = Posts(id = id,front_image = front_image  ,back_image = back_image , back_title = back_title,  back_text = back_text , back_link= back_link, Date = Date )
+                post = Posts(id = id, category=category,front_image = front_image  ,back_image = back_image , back_title = back_title,  back_text = back_text , back_link= back_link, Date = Date )
                 db.session.add(post)
                 db.session.commit()
 
             else:
                 post = Posts.query.filter_by(sno=sno).first()
                 post.id = id
+                post.category=category
                 post.front_image = front_image
                 post.back_image = back_image
                 post.back_title = back_title
