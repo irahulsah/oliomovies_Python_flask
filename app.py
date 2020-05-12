@@ -10,7 +10,7 @@ with open('config.json', 'r') as c:
 
 app = Flask(__name__)
 app.secret_key = 'super-secret key'
-ENV = 'PROD'
+ENV = 'prod'
 
 if ENV == 'dev':
     app.debug = True
@@ -53,7 +53,7 @@ class Posts(db.Model):
     back_link  = db.Column(db.String(2000), nullable = False)
     Date = db.Column(db.String(30), nullable =True)
 
-    def __init__(self , id, category , front_image,  back_image, back_title, back_text, back_link,  Date):
+    def __init__(self , id, category , youtube_link,front_image,  back_image, back_title, back_text, back_link,  Date):
         self.id = id
         self.category = category
         self.youtube_link = youtube_link
