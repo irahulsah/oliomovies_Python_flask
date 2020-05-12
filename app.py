@@ -10,7 +10,7 @@ with open('config.json', 'r') as c:
 
 app = Flask(__name__)
 app.secret_key = 'super-secret key'
-ENV = 'prod'
+ENV = 'PROD'
 
 if ENV == 'dev':
     app.debug = True
@@ -89,10 +89,28 @@ def home():
 
 @app.route('/about')
 def about():
+     return render_template('about.html', info = info)
+
+# for reading the contacts
+@app.route('/dashboardcontacts')
+def dc():
+    if ('user' in session and session['user'] == info['user_name']):
+        contacts = Contacts.query.filter_by().all()
+        return render_template('dashboardforcontacts.html',contacts=contacts, info = info)
+
+# for deleting contacts
+@app.route('/dashboardcontactsdelete/<string:sno>' , methods = ['GET' , 'POST'])
+def dcd(sno):
+    if ('user' in session and session['user'] == info['user_name']):
 
 
-    
-    return render_template('about.html', info = info)
+        contact = Contacts.query.filter_by(sno=sno).first()
+        db.session.delete(contact)
+        db.session.commit()
+        return redirect('/dashboardcontacts')
+        return render_template('dashboardforcontacts.html',contact=contact, info = info)
+
+
 
 
 @app.route('/movies')

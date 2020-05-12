@@ -68,10 +68,10 @@
                         <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                             aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            View
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a> -->
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                            Pages -->
+                            <!-- <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> -->
+                        <!-- </a> -->
+                        <!-- <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse"
@@ -96,11 +96,11 @@
                                             href="500.html">500 Page</a></nav>
                                 </div>
                             </nav>
-                        </div>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="/dashboardcontacts">
+                        </div> -->
+                        <div class="sb-sidenav-menu-heading">Movie Posts Dash</div>
+                        <a class="nav-link" href="/login">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Contacts list
+                            Dashboard of Movies
                         </a><a class="nav-link" href="tables.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Tables
@@ -116,20 +116,20 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-                    <h1 class="mt-4">Dashboard of Movies</h1>
+                    <h1 class="mt-4">Dashboard of Requests</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">List of movies added</li>
+                        <li class="breadcrumb-item active">List of Requests</li>
                     </ol>
                     <div class="row">
-                        <div class="col-xl-3 col-md-6">
+                        <!-- <div class="col-xl-3 col-md-6">
                             <div class="card bg-primary text-white mb-4">
-                                <div class="card-body">ADD NEW MOVIES</div>
+                                <div class="card-body">ADD NEW POST</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-white stretched-link" href="/edit/0">+ Add</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
 
 
@@ -156,42 +156,37 @@
                                     <thead>
                                         <tr>
                                             <th>Sno</th>
-                                            <th>ID</th>
-                                            <th>Category</th>
-                                            <th>Front Image</th>
-                                            <th>Back Image</th>
-                                            <th>Back Title</th>
+                                            <th>Movie Name </th>
+                                            <th>Email</th>
+                                            <th>Message</th>
                                             <th>Date</th>
-                                            <th>Edit</th>
+                                            
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Sno</th>
-                                            <th>ID</th>
-                                            <th>Category</th>
-                                            <th>Front Image</th>
-                                            <th>Back Image</th>
-                                            <th>Back Title</th>
+                                            <th>Movie Name</th>
+                                            <th>Email</th>
+                                            <th>Message</th>
                                             <th>Date</th>
-                                            <th>Edit</th>
+                                            
+                                            
                                             <th>Delete</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        {% for post in posts %}
+                                        {% for contact in contacts %}
                                         <tr>
-                                            <td>{{post.sno}}</td>
-                                            <td>{{post.id}}</td>
-                                            <td>{{post.category}}</td>
-                                            <td>{{post.front_image}}</td>
-                                            <td>{{post.back_image}}</td>
-                                            <td>{{post.back_title}}</td>
-                                            <td>{{post.Date}}</td>
-                                            <td><a href="/edit/{{post.sno}}"><button
-                                                        class="btn btn-primary float-left">Edit</button></a></td>
-                                            <td><a href="/delete/{{post.sno}}"><button
+                                            <td>{{contact.sno}}</td>
+                                            <td>{{contact.movie_name}}</td>
+                                            <td>{{contact.email}}</td>
+                                            <td>{{contact.message}}</td>
+                                            
+                                            <td>{{contact.Date}}</td>
+                                            
+                                            <td><a href="/dashboardcontactsdelete/{{contact.sno}}"><button
                                                         class="btn btn-primary float-left">Delete</button></a></td>
 
 
@@ -232,3 +227,4 @@
 </body>
 
 </html>
+
