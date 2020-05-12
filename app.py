@@ -80,7 +80,7 @@ class Crousels(db.Model):
 @app.route('/')
 def home():
 
-    posts = Posts.query.order_by(desc('sno')).all()
+    posts = Posts.query.order_by(desc('sno')).all()[0:6]
     
 
 
@@ -130,6 +130,7 @@ def movies():
 def movie_route(category):
     
     posts = Posts.query.filter_by(category=category)
+    
     return render_template('movie_cat.html', posts=posts, info=info)
 
 @app.route("/stream/<string:back_title>", methods=['GET'])
