@@ -1,5 +1,5 @@
 from flask import Flask,render_template,request,redirect ,session
-
+from sqlalchemy import desc
 from flask_sqlalchemy import SQLAlchemy
 import json
 from datetime import datetime
@@ -79,7 +79,8 @@ class Crousels(db.Model):
 
 @app.route('/')
 def home():
-    posts = Posts.query.filter_by().all()[0:6]
+
+    posts = Posts.query.order_by(desc('sno')).all()
     
 
 
