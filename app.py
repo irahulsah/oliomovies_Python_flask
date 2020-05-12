@@ -116,7 +116,7 @@ def dcd(sno):
 
 @app.route('/movies')
 def movies():
-    posts = Posts.query.filter_by().all()
+    posts = Posts.query.order_by(desc('sno')).all()
     crousel = Crousels.query.filter_by().all()
     
 
