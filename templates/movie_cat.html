@@ -85,8 +85,8 @@
                       <div class="portfolio-item-caption-content text-center text-white"><i
                               class="fas fa-plus fa-3x"></i></div>
                   </div>
-                  {% set fname = 'assets/img/portfolio/'+ post.front_image %}
-                  <img class="img-fluid" src="{{url_for('static' , filename = fname)}}" alt="" />
+                  
+                  <img class="img-fluid" src="{{post.front_image}}" alt="" />
               </div>
           </div>
 
@@ -111,11 +111,11 @@
                                           <div class="divider-custom-line"></div>
                                       </div>
                                       <!-- Portfolio Modal - Image-->
-                                      {% set lname = 'assets/img/portfolio/'+ post.back_image %}
+                                      
                                       <img class="img-fluid rounded mb-5"
-                                          src="{{url_for('static' , filename =lname)}}" alt="" />
+                                          src="{{post.back_image}}" alt="" />
                                       <!-- Portfolio Modal - Text-->
-                                      <p class="mb-5">{{post.back_text}}</p>
+                                      <p class="mb-5">{{post.back_text|safe}}</p>
 
                                       <a href="{{post.back_link}}" target="_blank"><button class="btn btn-primary"><i
                                                   class="fas fa-magnet"></i></i> Download</button></a>
