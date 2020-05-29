@@ -44,15 +44,35 @@ value= "{{post.tagline}}"> -->
 
           <label><b>Back Title</b></label>
           <textarea rows="2" class="form-control" placeholder="Enter Back Title Here" name="back_title" id="tagline"
-            required data-validation-required-message="Please enter a tagline.">{{post.back_title}}</textarea>
+            required data-validation-required-message="Please enter a tagline.">{{post.back_title}}</textarea><br>
 
 
 
           <!-- <input class="form-control form-control-lg" type="text" id ="slug" name ="slug" placeholder="SLUG" value = "{{post.slug}}"> -->
-          <label><b>Back Text</b></label>
+          <!-- <label><b>Back Text</b></label>
           <textarea rows="2" class="form-control" placeholder="Enter Back Text Here" name="back_text" id="slug" required
-            data-validation-required-message="Please enter a slug.">{{post.back_text}}</textarea>
+            data-validation-required-message="Please enter a slug.">{{post.back_text}}</textarea> -->
 
+            <label><b>Back Text</b></label>
+ <textarea id="summernote" name="back_text" >{{post.back_text}}</textarea>
+   
+ 
+ <script>
+   $('#summernote').summernote({
+     placeholder: 'Please Enter Back Text Here',
+     tabsize: 2,
+     height: 120,
+     toolbar: [
+       ['style', ['style']],
+       ['font', ['bold', 'underline', 'clear']],
+       ['color', ['color']],
+       ['para', ['ul', 'ol', 'paragraph']],
+       ['table', ['table']],
+       ['insert', ['link', 'picture', 'video']],
+       ['view', ['fullscreen', 'codeview', 'help']]
+     ]
+   });
+ </script>
 
           <label><b>Back Link</b></label>
           <textarea rows="2" class="form-control" placeholder="Enter Back Link Here" name="back_link" id="slug" required
