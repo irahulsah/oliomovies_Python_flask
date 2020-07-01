@@ -15,10 +15,12 @@ ENV = 'prod'
 if ENV == 'dev':
     app.debug = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:9865103845H@localhost/rahul'
+    
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 else:
     app.debug = False
     app.config['SQLALCHEMY_DATABASE_URI'] = info['prod_url']
+    app.config['SERVER_NAME'] = 'localhost:5000'
     
 
 db = SQLAlchemy(app)
