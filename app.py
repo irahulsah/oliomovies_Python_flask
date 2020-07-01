@@ -20,7 +20,7 @@ if ENV == 'dev':
 else:
     app.debug = False
     app.config['SQLALCHEMY_DATABASE_URI'] = info['prod_url']
-    app.config['SERVER_NAME'] = 'localhost:5000'
+    app.config['SERVER_NAME'] = 'localhost:80'
     
 
 db = SQLAlchemy(app)
