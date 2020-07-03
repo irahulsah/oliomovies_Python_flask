@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request,redirect ,session
 from sqlalchemy import desc
 from flask_sqlalchemy import SQLAlchemy
+import os
 import json
 from datetime import datetime
 from send_mail import send_mail
@@ -20,7 +21,7 @@ if ENV == 'dev':
 else:
     app.debug = False
     app.config['SQLALCHEMY_DATABASE_URI'] = info['prod_url']
-    app.config['SERVER_NAME'] = 'localhost:80'
+ 
     
 
 db = SQLAlchemy(app)
@@ -291,4 +292,4 @@ if __name__ == "__main__":
 
 
 
-    app.run()
+    app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8000)))
