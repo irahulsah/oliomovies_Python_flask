@@ -22,7 +22,7 @@
         "pic_4": "https://bandsaboutmovies.files.wordpress.com/2019/12/200x200.png",
         "pic_5": "https://competitionsinaustralia.com/wp-content/uploads/2019/12/Nova_BadBoysForLife.jpg",
         "twitch_url": "https://www.twitch.tv/",
-        "prod_url": "postgres://rtmohwyujtbitg:3dcc58c5dd8f7a035b75c4279dbbba0b3708fb6d0bc5b222c3df37abf3de4210@ec2-54-161-208-31.compute-1.amazonaws.com:5432/d1jtv34jfl7lte"
+        "prod_url": "your postgres production url"
 
 
 
